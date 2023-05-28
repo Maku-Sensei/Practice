@@ -66,4 +66,7 @@ hanoi n start hilf ziel = hanoi (n-1) start ziel hilf ++
   [( start, ziel)] ++ 
   hanoi (n-1) hilf start ziel
 
+--factorial lambda
+fix = \f -> f (fix f)
+loop = fix (\f n -> if n == 0 then 1 else n * f(n - 1)) --f is the factorial function itself (recursive call)
 
