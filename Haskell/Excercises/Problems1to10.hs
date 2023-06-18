@@ -67,5 +67,5 @@ encode (x:xs) = (x, length (filter (==x) xs) + 1) : encode (filter (/=x) xs)
 
 encode2 :: Eq a => [a] -> [(Int, a)]
 encode2 [] = []
-encode2 (x:xs) = let (prefix, suffix) = span (== x) xs
+encode2 (x:xs) = let (prefix, suffix) = span (==x) xs
                 in (length prefix + 1, x) : encode2 suffix
