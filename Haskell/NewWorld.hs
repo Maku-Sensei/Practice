@@ -1,5 +1,6 @@
 import Data.List(sort)
 import System.IO
+import Data.Map hiding (take)
 --Data Types
 sumofNums = sum[1..1000]
 modEx = 5 `mod` 4
@@ -63,6 +64,10 @@ getClass n = case n of
     6 -> "Go to elementary school"
     _ -> "Go away"
 
+--Maybe
+findElement :: Eq a => a -> [a] -> Maybe a
+findElement x [] = Nothing 
+findElement x (y:ys) = if x == y then Just y else findElement x ys
 --enumerated types, list of possible types
 data BaseballPlayer = Pitcher
                     | Catcher
@@ -124,7 +129,7 @@ data Employee = Employee { name :: String,
                             position :: String,
                             idNum :: Int
                             } deriving (Eq, Show) --deriving Eq allows you to use == or /=, deriving Show allows you to use it as a string
-samSmith = Employee {name = "Sam Smith", position = "Manager", idNum = 1000}	--create a new Employee	
+samSmith = Employee {name = "Sam Smith", position = "Manager", idNum = 1000}--create a new Employee	
 pamMarx = Employee {name = "Pam Marx", position = "Sales", idNum = 1001} --create a new Employee
 
 isSamPam = samSmith == pamMarx --False
@@ -185,6 +190,17 @@ fib = 1 : 1 : [a + b | (a, b) <- zip fib (tail fib)]
 fib300 = fib !! 300 --gets the 300th element of the list
 first20fib = take 20 fib --gets the first 20 elements of the list
 
+--fromListWith
+list = [("a", 1), ("b", 2), ("a", 3), ("c", 4)]
+combinedMap = fromListWith (+) list
+newList = [("a", 4), ("b", 2), ("a", 4)]
+combine = fromListWith (+) newList
+
+--toList
+map' :: Map String Int
+map' = fromList [("a", 1), ("b", 2), ("c", 3)]
+list' :: [(String, Int)]
+list' = toList map'
 
 
 

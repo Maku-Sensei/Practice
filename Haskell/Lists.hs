@@ -79,3 +79,10 @@ areStringEq _ _ = False -- "_ _" stands for two inputs, the same as x1, x2
 doMult :: (Int -> Int) -> Int
 doMult func = func 3 --func is like x
 num3Times4 = doMult times4
+
+--list comprehension
+chess = [(senkrecht, wagerecht) | wagerecht <- ["abcdefgh"], senkrecht <- [1..8]]
+--prime numbers
+primes = 2: [x | x <- [3,5..], and (map (\t -> x `mod` t /= 0) (takeWhile (\y -> y^2 <= x) primes)), x <= 200]
+
+andtest x = and (map (\t -> x `mod` t /= 0) (takeWhile (\y -> y^2 <= x) primes))

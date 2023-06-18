@@ -8,3 +8,5 @@ data Polygon a = Polygon [Punkt a]
 p :: Punkt a -> a
 p (Punkt a _) = a
 
+
+ 
